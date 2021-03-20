@@ -7,6 +7,7 @@ namespace SUAI.SpbGeographic.Trainer.Models
         public Guid Id { get; }
         public string CorrectAnswer { get; }
         public string ImageBase64 { get; }
+        public ExerciseHint Hint { get; }
 
         public Exercise(string correctAnswer, string imageBase64)
         {

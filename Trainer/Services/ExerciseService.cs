@@ -17,5 +17,9 @@ namespace SUAI.SpbGeographic.Trainer.Services
         public void EditExercise(Exercise exercise) => throw new NotImplementedException();
 
         public void DeleteExerciseById(Guid exerciseId) => throw new NotImplementedException();
+
+        public ExerciseHint GetHintByExerciseId(Guid exerciseId) => new ExerciseHint();
+
+        public ExerciseResult GetExerciseResult(ExerciseAnswer answer) => throw new NotImplementedException();
     }
 }
