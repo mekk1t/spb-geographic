@@ -1,5 +1,7 @@
 ﻿using SUAI.SpbGeographic.Trainer.Abstractions;
 using SUAI.SpbGeographic.Trainer.Models;
+using System;
+using System.Collections.Generic;
 
 namespace SUAI.SpbGeographic.Trainer.Services
 {
@@ -15,5 +17,11 @@ namespace SUAI.SpbGeographic.Trainer.Services
         public void Register(User user) => _userHandler.Register(user);
 
         public void Login(UserCredentials credentials) => _userHandler.Login(credentials);
+
+        public IEnumerable<User> GetAllUsers() => new List<User>();
+
+        public UserDetails GetUserDetails(Guid userId) => new UserDetails();
+
+        public void EditUser(User user) => throw new NotImplementedException();
     }
 }
