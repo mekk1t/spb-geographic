@@ -6,4 +6,8 @@
     <RootNamespace>SUAI.SpbGeographic.Trainer</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.4" />
+  </ItemGroup>
+
 </Project>
