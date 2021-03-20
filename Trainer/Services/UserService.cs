@@ -25,5 +25,7 @@ namespace SUAI.SpbGeographic.Trainer.Services
         public void EditUser(User user) => throw new NotImplementedException();
 
         public void SetUserAccessLevel(Guid userId, AccessLevel accessLevel) => throw new NotImplementedException();
+
+        public void DeleteUser(Guid userId) => throw new NotImplementedException();
     }
 }
