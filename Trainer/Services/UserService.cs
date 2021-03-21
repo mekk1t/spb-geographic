@@ -11,6 +11,7 @@ namespace SUAI.SpbGeographic.Trainer.Services
         private readonly IUserHandler _userHandler;
         private readonly IAccessValidator _accessValidator;
         private readonly ICommand<SetAccessLevelCommand> _setAccessLevelCommand;
+        private readonly ICommand<DeleteUserCommand> _deleteUserCommand;
 
         public UserService(IUserHandler userHandler, IAccessValidator accessValidator)
         {
@@ -39,6 +40,15 @@ namespace SUAI.SpbGeographic.Trainer.Services
             throw new Exception("Нет права доступа");
         }
 
-        public void DeleteUser(Guid userId) => throw new NotImplementedException();
+        public void DeleteUser(DeleteUserCommand command)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Superadmin))
+            {
+                _deleteUserCommand.Execute(command);
+                return;
+            }
+
+            throw new Exception("Нет прав доступа");
+        }
     }
 }
