@@ -53,9 +53,9 @@ namespace SUAI.SpbGeographic.Trainer.Services
             throw new ForbiddenException();
         }
 
-        public TestLeaderboard GetTestLeaderboard(Guid testId) => new TestLeaderboard();
+        public TestLeaderboard GetTestLeaderboard(Guid testId) => throw new NotImplementedException();
 
-        public TestResult GetTestResult(Guid testId, Guid userId) => new TestResult();
+        public TestResult GetTestResult(Guid testId, Guid userId) => throw new NotImplementedException();
 
         public void ProcessTestSolution(TestSolution solution) => throw new NotImplementedException();
     }

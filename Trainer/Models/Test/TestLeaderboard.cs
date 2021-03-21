@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SUAI.SpbGeographic.Trainer.Models
 {
     public class TestLeaderboard
     {
-        public Dictionary<Guid, double> UsersPercents { get; }
+        public Dictionary<User, double> UsersPercents { get; }
     }
 }
