@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API\Api.csproj" />
-    <ProjectReference Include="..\DataAccessLayer\Dal.csproj" />
+    <ProjectReference Include="..\Dal\Dal.csproj" />
     <ProjectReference Include="..\Trainer\Trainer.csproj" />
   </ItemGroup>
 
