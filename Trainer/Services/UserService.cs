@@ -1,7 +1,5 @@
 ﻿using SUAI.SpbGeographic.Trainer.Abstractions;
 using SUAI.SpbGeographic.Trainer.Models;
-using SUAI.SpbGeographic.Trainer.Models.Commands;
-using SUAI.SpbGeographic.Trainer.Models.Queries;
 using System;
 using System.Collections.Generic;
 
@@ -9,50 +7,47 @@ namespace SUAI.SpbGeographic.Trainer.Services
 {
     public class UserService
     {
-        private readonly IUserHandler _userHandler;
+        private readonly IAccountService _accountService;
         private readonly IAccessValidator _accessValidator;
-        private readonly ICommand<SetAccessLevelCommand> _setAccessLevelCommand;
-        private readonly ICommand<DeleteUserCommand> _deleteUserCommand;
-        private readonly ICommand<EditUserCommand> _editUserCommand;
-        private readonly IQuery<IEnumerable<User>> _getAllUsersQuery;
-        private readonly IQuery<UserDetails, GetUserDetailsQuery> _getUserDetailsQuery;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IUserHandler userHandler, IAccessValidator accessValidator)
+        public UserService(IAccountService accountService, IAccessValidator accessValidator, IUserRepository userRepository)
         {
-            _userHandler = userHandler;
+            _accountService = accountService;
             _accessValidator = accessValidator;
+            _userRepository = userRepository;
         }
 
-        public void Register(User user) => _userHandler.Register(user);
+        public void Register(User user) => _accountService.Register(user);
 
-        public void Login(UserCredentials credentials) => _userHandler.Login(credentials);
+        public void Login(UserCredentials credentials) => _accountService.Login(credentials);
 
-        public IEnumerable<User> GetAllUsers() => _getAllUsersQuery.Execute();
+        public IEnumerable<User> GetAllUsers() => _userRepository.GetAllUsers();
 
-        public UserDetails GetUserDetails(GetUserDetailsQuery query) => _getUserDetailsQuery.Execute(query);
+        public UserDetails GetUserDetails(Guid userId) => _userRepository.GetUserDetails(userId);
 
-        public void EditUser(EditUserCommand command) => _editUserCommand.Execute(command);
+        public void EditUser(User user) => _userRepository.EditUser(user);
 
-        public void SetUserAccessLevel(SetAccessLevelCommand command)
+        public void SetUserAccessLevel(Guid userId, AccessLevel accessLevel)
         {
             if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Superadmin))
             {
-                _setAccessLevelCommand.Execute(command);
+                _accountService.SetUserAccessLevel(userId, accessLevel);
                 return;
             }
 
-            throw new Exception("Нет права доступа");
+            throw new ForbiddenException();
         }
 
-        public void DeleteUser(DeleteUserCommand command)
+        public void DeleteUser(Guid userId)
         {
             if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Superadmin))
             {
-                _deleteUserCommand.Execute(command);
+                _userRepository.DeleteUser(userId);
                 return;
             }
 
-            throw new Exception("Нет прав доступа");
+            throw new ForbiddenException();
         }
     }
 }
