@@ -26,7 +26,7 @@ namespace SUAI.SpbGeographic.Trainer.Services
 
         public UserDetails GetUserDetails(Guid userId) => _userRepository.GetUserDetails(userId);
 
-        public void EditUser(User user) => _userRepository.EditUser(user);
+        public void EditUser(Guid userId, UserDetails details) => _userRepository.EditUser(userId, details);
 
         public void SetUserAccessLevel(Guid userId, AccessLevel accessLevel)
         {
