@@ -25,5 +25,8 @@ namespace SUAI.SpbGeographic.Trainer.Extensions
 
             return hash;
         }
+
+        public static bool EqualsIgnoreCase(this string source, string target)
+            => string.Equals(source, target, StringComparison.OrdinalIgnoreCase);
     }
 }

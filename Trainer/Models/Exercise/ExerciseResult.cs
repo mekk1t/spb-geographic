@@ -2,6 +2,11 @@
 {
     public class ExerciseResult
     {
+        public bool IsCorrect { get; }
 
+        public ExerciseResult(bool result)
+        {
+            IsCorrect = result;
+        }
     }
 }

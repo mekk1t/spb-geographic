@@ -1,4 +1,6 @@
-﻿using SUAI.SpbGeographic.Trainer.Models;
+﻿using SUAI.SpbGeographic.Trainer.Abstractions;
+using SUAI.SpbGeographic.Trainer.Extensions;
+using SUAI.SpbGeographic.Trainer.Models;
 using System;
 using System.Collections.Generic;
 
@@ -6,20 +8,71 @@ namespace SUAI.SpbGeographic.Trainer.Services
 {
     public class ExerciseService
     {
-        public IEnumerable<Exercise> GetAllExercises() => new List<Exercise>();
+        private readonly IExerciseRepository _exerciseRepository;
+        private readonly IAccessValidator _accessValidator;
 
-        public IEnumerable<Exercise> GetExercisesFiltered(ExerciseFilter filter) => throw new NotImplementedException();
+        public ExerciseService(IExerciseRepository exerciseRepository, IAccessValidator accessValidator)
+        {
+            _exerciseRepository = exerciseRepository;
+            _accessValidator = accessValidator;
+        }
 
-        public Exercise GetExerciseById(Guid exerciseId) => throw new NotImplementedException();
+        public IEnumerable<Exercise> GetAllExercises() => _exerciseRepository.GetAllExercises();
 
-        public void CreateNewExercise(Exercise exercise) => throw new NotImplementedException();
+        public IEnumerable<Exercise> GetFilteredExercises(ExerciseFilter filter) => _exerciseRepository.GetFilteredExercises(filter);
 
-        public void EditExercise(Exercise exercise) => throw new NotImplementedException();
+        public Exercise GetExerciseById(Guid exerciseId) => _exerciseRepository.GetExercise(exerciseId);
 
-        public void DeleteExerciseById(Guid exerciseId) => throw new NotImplementedException();
+        public void CreateNewExercise(Exercise exercise)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Administrator))
+            {
+                _exerciseRepository.CreateExercise(exercise);
+                return;
+            }
 
-        public ExerciseHint GetHintByExerciseId(Guid exerciseId) => new ExerciseHint();
+            throw new ForbiddenException();
+        }
 
-        public ExerciseResult GetExerciseResult(ExerciseAnswer answer) => throw new NotImplementedException();
+        public void EditExercise(Exercise exercise)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Administrator))
+            {
+                _exerciseRepository.EditExercise(exercise);
+                return;
+            }
+
+            throw new ForbiddenException();
+        }
+
+        public void DeleteExerciseById(Guid exerciseId)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Administrator))
+            {
+                _exerciseRepository.DeleteExercise(exerciseId);
+                return;
+            }
+
+            throw new ForbiddenException();
+        }
+
+        public ExerciseHint GetHintByExerciseId(Guid exerciseId)
+        {
+            var exercise = _exerciseRepository.GetExercise(exerciseId);
+            return exercise.Hint;
+        }
+
+        public ExerciseResult GetExerciseResult(ExerciseAnswer answer)
+        {
+            var exercise = _exerciseRepository.GetExercise(answer.ExerciseId);
+
+            bool isCorrectAnswer = false;
+            if (exercise.CorrectAnswer.EqualsIgnoreCase(answer.Answer))
+            {
+                isCorrectAnswer = true;
+            }
+
+            return new ExerciseResult(isCorrectAnswer);
+        }
     }
 }
