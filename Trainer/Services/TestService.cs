@@ -1,4 +1,5 @@
-﻿using SUAI.SpbGeographic.Trainer.Models;
+﻿using SUAI.SpbGeographic.Trainer.Abstractions;
+using SUAI.SpbGeographic.Trainer.Models;
 using System;
 using System.Collections.Generic;
 
@@ -6,15 +7,51 @@ namespace SUAI.SpbGeographic.Trainer.Services
 {
     public class TestService
     {
-        public IEnumerable<Test> GetAllTests() => new List<Test>();
+        private readonly ITestRepository _testRepository;
+        private readonly IAccessValidator _accessValidator;
 
-        public IEnumerable<Test> GetTestsFiltered(TestFilter filter) => throw new NotImplementedException();
+        public TestService(ITestRepository testRepository, IAccessValidator accessValidator)
+        {
+            _testRepository = testRepository;
+            _accessValidator = accessValidator;
+        }
 
-        public void CreateNewTest(Test test) => throw new Exception();
+        public IEnumerable<Test> GetAllTests() => _testRepository.GetAllTests();
 
-        public void EditTest(Test test) => throw new Exception();
+        public IEnumerable<Test> GetFilteredTests(TestFilter filter) => _testRepository.GetFilteredTests(filter);
 
-        public void DeleteTestById(Guid testId) => throw new Exception();
+        public void CreateNewTest(Test test)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Teacher))
+            {
+                _testRepository.CreateNewTest(test);
+                return;
+            }
+
+            throw new ForbiddenException();
+        }
+
+        public void EditTest(Test test)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Teacher))
+            {
+                _testRepository.EditTest(test);
+                return;
+            }
+
+            throw new ForbiddenException();
+        }
+
+        public void DeleteTestById(Guid testId)
+        {
+            if (_accessValidator.CurrentUserHasAccessLevel(AccessLevel.Administrator))
+            {
+                _testRepository.DeleteTest(testId);
+                return;
+            }
+
+            throw new ForbiddenException();
+        }
 
         public TestLeaderboard GetTestLeaderboard(Guid testId) => new TestLeaderboard();
 
