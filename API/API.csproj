@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>SUAI.SpbGeographic.Api</AssemblyName>
+    <RootNamespace>SUAI.SpbGeographic.Api</RootNamespace>
+  </PropertyGroup>
+
+</Project>
