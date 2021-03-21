@@ -8,7 +8,7 @@ namespace SUAI.SpbGeographic.Trainer.Abstractions
     {
         IEnumerable<User> GetAllUsers();
         UserDetails GetUserDetails(Guid userId);
-        void EditUser(User user);
+        void EditUser(Guid userId, UserDetails details);
         void DeleteUser(Guid userId);
     }
 }
