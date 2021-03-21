@@ -6,4 +6,8 @@
     <RootNamespace>SUAI.SpbGeographic.Dal</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Trainer\Trainer.csproj" />
+  </ItemGroup>
+
 </Project>

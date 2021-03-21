@@ -6,4 +6,9 @@
     <RootNamespace>SUAI.SpbGeographic.Api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\Dal.csproj" />
+    <ProjectReference Include="..\Trainer\Trainer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainer", "Trainer\Trainer.csproj", "{498B7759-551E-4EDF-A132-1B111EBEC6B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{432ADCC9-83E3-4E53-91C2-A5CC66DD3B28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "API\Api.csproj", "{432ADCC9-83E3-4E53-91C2-A5CC66DD3B28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal.Exercises", "DataAccessLayer\Dal.Exercises.csproj", "{784667CC-B409-4D23-AC13-434A431CC80E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal.Users", "Dal.Users\Dal.Users.csproj", "{4EB4CC65-912B-4F34-A013-BFED1B71F039}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "DataAccessLayer\Dal.csproj", "{784667CC-B409-4D23-AC13-434A431CC80E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{784667CC-B409-4D23-AC13-434A431CC80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{784667CC-B409-4D23-AC13-434A431CC80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{784667CC-B409-4D23-AC13-434A431CC80E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4EB4CC65-912B-4F34-A013-BFED1B71F039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EB4CC65-912B-4F34-A013-BFED1B71F039}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EB4CC65-912B-4F34-A013-BFED1B71F039}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EB4CC65-912B-4F34-A013-BFED1B71F039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
