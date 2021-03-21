@@ -1,6 +1,7 @@
 ﻿using SUAI.SpbGeographic.Trainer.Abstractions;
 using SUAI.SpbGeographic.Trainer.Models;
 using SUAI.SpbGeographic.Trainer.Models.Commands;
+using SUAI.SpbGeographic.Trainer.Models.Queries;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,9 @@ namespace SUAI.SpbGeographic.Trainer.Services
         private readonly IAccessValidator _accessValidator;
         private readonly ICommand<SetAccessLevelCommand> _setAccessLevelCommand;
         private readonly ICommand<DeleteUserCommand> _deleteUserCommand;
+        private readonly ICommand<EditUserCommand> _editUserCommand;
+        private readonly IQuery<IEnumerable<User>> _getAllUsersQuery;
+        private readonly IQuery<UserDetails, GetUserDetailsQuery> _getUserDetailsQuery;
 
         public UserService(IUserHandler userHandler, IAccessValidator accessValidator)
         {
@@ -23,11 +27,11 @@ namespace SUAI.SpbGeographic.Trainer.Services
 
         public void Login(UserCredentials credentials) => _userHandler.Login(credentials);
 
-        public IEnumerable<User> GetAllUsers() => new List<User>();
+        public IEnumerable<User> GetAllUsers() => _getAllUsersQuery.Execute();
 
-        public UserDetails GetUserDetails(Guid userId) => new UserDetails();
+        public UserDetails GetUserDetails(GetUserDetailsQuery query) => _getUserDetailsQuery.Execute(query);
 
-        public void EditUser(User user) => throw new NotImplementedException();
+        public void EditUser(EditUserCommand command) => _editUserCommand.Execute(command);
 
         public void SetUserAccessLevel(SetAccessLevelCommand command)
         {
