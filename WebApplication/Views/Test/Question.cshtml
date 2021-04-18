@@ -1,0 +1,15 @@
+﻿@model QuestionViewModel
+<div class="question">
+    <div class="question-image">
+        <img width="400" src="data:image/png;base64, @Model.ImageBase64" alt="Картинка"/>
+    </div>
+    <div class="select-answer">
+        @foreach (var answer in Model.Options)
+        {
+            <label>
+                <input asp-for="SelectedAnswer" type="radio" value="@answer"/>
+                @answer
+            </label> <br />
+        }
+    </div>
+</div>
