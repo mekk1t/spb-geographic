@@ -7,17 +7,21 @@ namespace WebApplication.Controllers
 {
     public class ResultController : Controller
     {
-        public IActionResult Index(IEnumerable<QuestionViewModel> results)
+        public IActionResult Easy(IEnumerable<QuestionViewModel> results)
         {
             var correctAnswersCount = results.Count(r => r.SelectedAnswer == r.CorrectAnswer);
             var correctAnswersRatio = (double)correctAnswersCount / results.Count();
 
             if (correctAnswersRatio >= 0.5)
             {
-                return View("Pass");
+                return View("Easy_Win");
             }
 
-            return View("Fail");
+            return View("Easy");
         }
+
+        public IActionResult Medium() => View();
+
+        public IActionResult Hard() => View();
     }
 }
