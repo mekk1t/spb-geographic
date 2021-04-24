@@ -10,4 +10,58 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Images\Hard\Petrogradskiy\DivoOstrov\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\DivoOstrov\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\DivoOstrov\Screenshots\variant_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\DivoOstrov\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\DivoOstrov\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\GazpromArena\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\GazpromArena\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\GazpromArena\Screenshots\variant_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\GazpromArena\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\GazpromArena\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\variant_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\Hard\Petrogradskiy\DivoOstrov\Screenshots\" />
+    <Folder Include="Images\Hard\Petrogradskiy\GazpromArena\Screenshots\" />
+    <Folder Include="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\" />
+  </ItemGroup>
+
 </Project>
