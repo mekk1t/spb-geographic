@@ -17,17 +17,22 @@ namespace WebApplication.Controllers
 
         public IActionResult Hard(IList<HardQuestionViewModel> questions)
         {
-            Dictionary<int, bool> results = new();
+            int correctAnswers = 0;
 
             for (int i = 0; i < questions.Count; i++)
             {
-                results.Add(i, questions[i].CorrectAnswer == questions[i].SelectedAnswer);
+                if (questions[i].CorrectAnswer == questions[i].SelectedAnswer)
+                    correctAnswers++;
             }
 
-            return Json(results, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
+            decimal correctRatio = (decimal)correctAnswers / (decimal)questions.Count;
+
+            if (correctRatio > 0.8M)
+                return View("Win");
+            if (correctRatio > 0.5M && correctRatio <= 0.8M)
+                return View("Neutral");
+
+            return View("Fail");
         }
     }
 }

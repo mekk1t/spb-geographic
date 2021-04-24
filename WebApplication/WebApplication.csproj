@@ -64,4 +64,16 @@
     <Folder Include="Images\Hard\Petrogradskiy\PetropavlovskayaKrepost\Screenshots\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Results\fail.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Results\neutral.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Results\success.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
