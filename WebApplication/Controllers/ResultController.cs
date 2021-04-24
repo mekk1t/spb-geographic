@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
 using WebApplication.Models;
+using WebApplication.Models.Hard;
 
 namespace WebApplication.Controllers
 {
@@ -9,20 +12,23 @@ namespace WebApplication.Controllers
         public IActionResult Easy(IEnumerable<QuestionViewModel> results)
         {
             return View();
-            // Пример обработки
-            //var correctAnswersCount = results.Count(r => r.SelectedAnswer == r.CorrectAnswer);
-            //var correctAnswersRatio = (double)correctAnswersCount / results.Count();
-
-            //if (correctAnswersRatio >= 0.5)
-            //{
-            //    return View("Easy_Win");
-            //}
-
-            //return View("Easy");
         }
 
         public IActionResult Medium() => View();
 
-        public IActionResult Hard() => View();
+        public IActionResult Hard(IList<HardQuestionViewModel> questions)
+        {
+            Dictionary<int, bool> results = new();
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                results.Add(i, questions[i].CorrectAnswer == questions[i].SelectedAnswer);
+            }
+
+            return Json(results, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+        }
     }
 }

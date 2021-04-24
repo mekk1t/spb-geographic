@@ -12,7 +12,7 @@ namespace WebApplication.Controllers
         {
             var handler = new TestQuestionsHandler("Images/Hard/Petrogradskiy");
             var questions = handler.GetQuestions();
-            return View(new HardTestViewModel { Questions = questions });
+            return View(questions);
         }
     }
 }
