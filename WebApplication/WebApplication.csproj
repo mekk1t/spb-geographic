@@ -65,10 +65,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Results\fail.jpg">
+    <None Include="wwwroot\Results\neutral.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\Results\neutral.png">
+    <None Include="wwwroot\Results\fail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\Results\success.jpg">
