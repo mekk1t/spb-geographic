@@ -23,7 +23,7 @@ namespace WebApplication.Controllers
             if (correctRatio > 0.8M)
                 return View("Win");
             if (correctRatio > 0.5M && correctRatio <= 0.8M)
-                return View("Neutral");
+                return Ok();
 
             return View("Fail");
         }
