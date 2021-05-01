@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using WebApplication.Models;
+using WebApplication.Models.Easy;
 
 namespace WebApplication.Controllers
 {
     public class ResultController : Controller
     {
-        public IActionResult Easy(IEnumerable<QuestionViewModel> results)
+        public IActionResult Easy(IList<EasyQuestionViewModel> questions)
         {
-            return View();
-            // Пример обработки
-            //var correctAnswersCount = results.Count(r => r.SelectedAnswer == r.CorrectAnswer);
-            //var correctAnswersRatio = (double)correctAnswersCount / results.Count();
+            int correctAnswers = 0;
 
-            //if (correctAnswersRatio >= 0.5)
-            //{
-            //    return View("Easy_Win");
-            //}
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (questions[i].CorrectAnswer == questions[i].SelectedAnswer)
+                    correctAnswers++;
+            }
 
-            //return View("Easy");
+            decimal correctRatio = (decimal)correctAnswers / (decimal)questions.Count;
+
+            if (correctRatio > 0.8M)
+                return View("Win");
+            if (correctRatio > 0.5M && correctRatio <= 0.8M)
+                return View("Neutral");
+
+            return View("Fail");
         }
 
         public IActionResult Medium() => View();

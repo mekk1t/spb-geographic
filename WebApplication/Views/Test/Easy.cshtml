@@ -1,4 +1,4 @@
-﻿@model IList<QuestionViewModel>
+﻿@model IList<WebApplication.Models.Easy.EasyQuestionViewModel>
 
 <p>Решай тест давай</p>
 <div class="unique">
@@ -7,7 +7,7 @@
         {
             <div class="question">
                 <div class="question-image">
-                    <img width="400" src="data:image/png;base64, @Model[i].ImageBase64" alt="Картинка" />
+                    <img width="400" src="@Model[i].ImageBase64" alt="Картинка" />
                 </div>
                 <div class="select-answer">
                     @foreach (var answer in Model[i].Options)
