@@ -59,19 +59,127 @@
     <None Update="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\LakhtaTsentr\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\LakhtaTsentr\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\LakhtaTsentr\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\LakhtaTsentr\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Hard\Primorskiy\Park300\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\Park300\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\Park300\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\Park300\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Primorskiy\Park300\Screenshots\variant_4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\Screenshots\variant-3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Hard\Pushkinskiy\Bolshoy_Yekaterininskiy_Dvorets\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\Bolshoy_Yekaterininskiy_Dvorets\Screenshots\variant_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\Bolshoy_Yekaterininskiy_Dvorets\Screenshots\variant-3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\Bolshoy_Yekaterininskiy_Dvorets\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\Bolshoy_Yekaterininskiy_Dvorets\Screenshots\variant_4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Images\Hard\Pushkinskiy\PamyatnikPushkiny\image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Images\Hard\Pushkinskiy\PamyatnikPushkiny\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\PamyatnikPushkiny\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\PamyatnikPushkiny\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\PamyatnikPushkiny\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Hard\Pushkinskiy\YekaterininskiyPark\image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\YekaterininskiyPark\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\YekaterininskiyPark\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\YekaterininskiyPark\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Pushkinskiy\YekaterininskiyPark\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\DvortsovoyaPloshad\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\DvortsovoyaPloshad\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\DvortsovoyaPloshad\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\DvortsovoyaPloshad\Screenshots\variant_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\KazanskiySobor\Screenshots\correct.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\KazanskiySobor\Screenshots\variant_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\KazanskiySobor\Screenshots\variant_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\Hard\Tsentral%27nyy\KazanskiySobor\Screenshots\variant_4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Images\Hard\Tsentral'nyy\DvortsovoyaPloshad\image.jpg">
@@ -92,6 +200,11 @@
     <Folder Include="Images\Hard\Primorskiy\BuddiyskiyKhramDatsanGunzechoyney\Screenshots\" />
     <Folder Include="Images\Hard\Primorskiy\LakhtaTsentr\Screenshots\" />
     <Folder Include="Images\Hard\Primorskiy\Park300\Screenshots\" />
+    <Folder Include="Images\Hard\Pushkinskiy\ALEKSANDROVSKIY_DVORETS\Screenshots\" />
+    <Folder Include="Images\Hard\Pushkinskiy\PamyatnikPushkiny\Screenshots\" />
+    <Folder Include="Images\Hard\Pushkinskiy\YekaterininskiyPark\Screenshots\" />
+    <Folder Include="Images\Hard\Tsentral%27nyy\DvortsovoyaPloshad\Screenshots\" />
+    <Folder Include="Images\Hard\Tsentral%27nyy\KazanskiySobor\Screenshots\" />
   </ItemGroup>
 
   <ItemGroup>
