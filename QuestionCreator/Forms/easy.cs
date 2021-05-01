@@ -11,14 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using QuestionCreator.Models;
+using QuestionCreator.Forms;
 
 namespace QuestionCreator
 {
-    public partial class Form1 : Form
+    public partial class Easy : Form
     {
-        public Form1()
+        public Easy()
         {
             InitializeComponent();
+            FormClosed += Form_Closed;
             Text = $"Работа с вопросами для легкого теста ver.{Application.ProductVersion}";
 
             ToolStripMenuItem fileItem = new ToolStripMenuItem("Файл");
@@ -92,7 +94,9 @@ namespace QuestionCreator
                 };
                 MessageBox.Show(filename);
                 File.WriteAllText(filename, JsonConvert.SerializeObject(json, Formatting.Indented));
-                Application.Restart();
+                Close();
+                Easy easy = new Easy();
+                easy.Show();
             }
         }
 
@@ -137,6 +141,19 @@ namespace QuestionCreator
                         break;
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            startForm startForm = new startForm();
+            startForm.Show();
+            Close();
+        }
+
+        private void Form_Closed( object sender, FormClosedEventArgs e)
+        {
+            Form form = Application.OpenForms[0];
+            form.Show();
         }
     }
 }
