@@ -33,7 +33,7 @@ namespace WebApplication.DirectoryHandlers
             return result;
         }
 
-        private string GetBase64File(string filePath)
+        private static string GetBase64File(string filePath)
             => Convert.ToBase64String(File.ReadAllBytes(filePath));
     }
 }
