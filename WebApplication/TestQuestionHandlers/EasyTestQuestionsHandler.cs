@@ -35,7 +35,6 @@ namespace WebApplication.DirectoryHandlers
             {
                 Console.WriteLine("Отсутствуют необходимые папки");
             }
-            //result.Add(JsonConvert.DeserializeObject<EasyQuestionViewModel>(File.ReadAllText("Images/Easy/Admiralteyskiy/1.json")));
             return result;
         }
     }

@@ -10,8 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using QuestionCreator.Models;
 using QuestionCreator.Forms;
+using WebApplication.Models.Easy;
 
 namespace QuestionCreator
 {
@@ -81,7 +81,7 @@ namespace QuestionCreator
         private void saveJson()
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = ".json|*.json";
+            sfd.Filter = "Файлы в формате JSON(.json)|*.json";
             sfd.FileName = pictureName;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -158,6 +158,7 @@ namespace QuestionCreator
         {
             Form form = Application.OpenForms[0];
             form.Show();
+            Controls.Clear();
         }
     }
 }
