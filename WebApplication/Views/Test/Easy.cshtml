@@ -1,13 +1,24 @@
 ﻿@model IList<WebApplication.Models.Easy.EasyQuestionViewModel>
 
-<p>Решай тест давай</p>
+<style>
+    .scale {
+        transition: 1s; 
+    }
+
+    .scale:hover {
+         transform: scale(1.5); 
+    }
+</style>
+
+<p>Легкий тест</p>
 <div class="unique">
     <form enctype="multipart/form-data" asp-controller="Result" asp-action="Easy" method="post">
         @for (int i = 0; i < Model.Count; i++)
         {
             <div class="question">
+                <h3 name ="[@i].Question">@Model[i].Question </h3>
                 <div class="question-image">
-                    <img width="400" src="@Model[i].ImageBase64" alt="Картинка" />
+                    <img width="400" src="@Model[i].ImageBase64" alt="Картинка" class="scale"/>
                 </div>
                 <div class="select-answer">
                     @foreach (var answer in Model[i].Options)

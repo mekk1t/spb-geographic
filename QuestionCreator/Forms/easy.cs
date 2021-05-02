@@ -23,12 +23,12 @@ namespace QuestionCreator
             FormClosed += Form_Closed;
             Text = $"Работа с вопросами для легкого теста ver.{Application.ProductVersion}";
 
-            ToolStripMenuItem fileItem = new ToolStripMenuItem("Файл");
-            fileItem.DropDownItems.Add("Открыть json");
-            fileItem.DropDownItems.Add(new ToolStripMenuItem("Сохранить json"));
+            //ToolStripMenuItem fileItem = new ToolStripMenuItem("Файл");
+            //fileItem.DropDownItems.Add("Открыть json");
+            //fileItem.DropDownItems.Add(new ToolStripMenuItem("Сохранить json"));
 
-            fileItem.DropDownItemClicked += FileItem_Click;
-            menuStrip1.Items.Add(fileItem);
+            //fileItem.DropDownItemClicked += FileItem_Click;
+            //menuStrip1.Items.Add(fileItem);
 
             ToolStripMenuItem openImage = new ToolStripMenuItem("Открыть изображение");
             ToolStripMenuItem cleanImage = new ToolStripMenuItem("Очистить");
@@ -43,9 +43,9 @@ namespace QuestionCreator
         }
 
         Image image;
-        Boolean opened = false;
-        string answer = "test";
-        string image_location = "";
+        string answer;
+        string image_location;
+        string pictureName;
         private void FileItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
             string action = e.ClickedItem.Text;
@@ -64,8 +64,12 @@ namespace QuestionCreator
             {
                 image = Image.FromFile(openFileDialog1.FileName);
                 pictureBox1.Image = image;
-                opened = true;
                 image_location = openFileDialog1.FileName;
+
+                pictureName = Path.GetFileNameWithoutExtension(openFileDialog1.FileName);
+
+                label3.Text = pictureName;
+                label3.Visible = true;
             }
         }
 
@@ -78,19 +82,21 @@ namespace QuestionCreator
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = ".json|*.json";
+            sfd.FileName = pictureName;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 string filename = sfd.FileName;
 
                 EasyQuestionViewModel json = new EasyQuestionViewModel
                 {
-                    ImageBase64 = ($"data:image/jpeg; base64,{Convert.ToBase64String(File.ReadAllBytes(image_location))}"),
+                    Question = richTextBox1.Text,
                     Options = new string[]
                     {
                         textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text
                     },
                     CorrectAnswer = answer,
-                    SelectedAnswer = "0"
+                    SelectedAnswer = "0",
+                    ImageBase64 = ($"data:image/jpeg; base64,{Convert.ToBase64String(File.ReadAllBytes(image_location))}")
                 };
                 MessageBox.Show(filename);
                 File.WriteAllText(filename, JsonConvert.SerializeObject(json, Formatting.Indented));
@@ -107,7 +113,7 @@ namespace QuestionCreator
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" & textBox2.Text != "" & textBox3.Text != "" & textBox4.Text != "")
+            if (textBox1.Text != "" & textBox2.Text != "" & textBox3.Text != "" & textBox4.Text != "" & richTextBox1.Text != "")
             {
                 button1.Enabled = true;
             }
@@ -116,7 +122,6 @@ namespace QuestionCreator
         void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-
             if (rb == null)
             {
                 return;
@@ -124,7 +129,6 @@ namespace QuestionCreator
             if (rb.Checked)
             {
                 string action = rb.Text;
-
                 switch (action)
                 {
                     case "1":
@@ -145,8 +149,8 @@ namespace QuestionCreator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            startForm startForm = new startForm();
-            startForm.Show();
+            Form form = Application.OpenForms[0];
+            form.Show();
             Close();
         }
 

@@ -5,7 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>rocket_space_icon_185991.ico</ApplicationIcon>
-    <Version>0.61</Version>
+    <Version>0.84</Version>
     <PackageIcon>rocket_space_icon_185991.ico</PackageIcon>
   </PropertyGroup>
 

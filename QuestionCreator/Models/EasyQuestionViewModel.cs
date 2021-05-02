@@ -9,9 +9,10 @@ namespace QuestionCreator.Models
     /// </summary>
     public class EasyQuestionViewModel
     {
-        public string ImageBase64 { get; set; }
+        public string Question { get; set; }
         public string[] Options { get; set; }
         public string CorrectAnswer { get; set; }
         public string SelectedAnswer { get; set; }
+        public string ImageBase64 { get; set; }
     }
 }
