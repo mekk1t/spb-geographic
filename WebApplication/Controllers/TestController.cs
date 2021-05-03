@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models.Hard;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using WebApplication.DirectoryHandlers;
-using WebApplication.Models;
 using WebApplication.Models.Easy;
+using WebApplication.Models.Medium;
+using WebApplication.TestQuestionHandlers;
 
 namespace WebApplication.Controllers
 {
     public class TestController : Controller
     {
-        public IActionResult Easy() 
+        public IActionResult Easy()
         {
             var easySubDirectories = Directory.GetDirectories("Images/Easy");
             var questions = new List<EasyQuestionViewModel>();
@@ -22,7 +22,20 @@ namespace WebApplication.Controllers
             }
             return View(questions);
         }
-        public IActionResult Medium() => View();
+
+        public IActionResult Medium()
+        {
+            var mediumSubDirectories = Directory.GetDirectories("Images/Medium");
+            var questions = new List<MediumQuestionViewModel>();
+            foreach (var subDirectory in mediumSubDirectories)
+            {
+                var handler = new MediumTestQuestionsHandler(subDirectory);
+                questions.AddRange(handler.GetQuestions());
+            }
+
+            return View(questions);
+        }
+
         public IActionResult Hard()
         {
             var hardSubDirectories = Directory.GetDirectories("Images/Hard");

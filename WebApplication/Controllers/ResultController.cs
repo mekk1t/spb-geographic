@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using WebApplication.Models.Hard;
 using WebApplication.Models.Easy;
+using WebApplication.Models.Medium;
 
 namespace WebApplication.Controllers
 {
@@ -17,17 +18,20 @@ namespace WebApplication.Controllers
                     correctAnswers++;
             }
 
-            decimal correctRatio = (decimal)correctAnswers / (decimal)questions.Count;
-
-            if (correctRatio > 0.8M)
-                return View("Win");
-            if (correctRatio > 0.5M && correctRatio <= 0.8M)
-                return Ok();
-
-            return View("Fail");
+            return ResultPage(correctAnswers, questions.Count);
         }
 
-        public IActionResult Medium() => View();
+        public IActionResult Medium(IList<MediumQuestionViewModel> questions)
+        {
+            int correctAnswers = 0;
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (questions[i].PossibleAnswers.Contains(questions[i].UserInput))
+                    correctAnswers++;
+            }
+
+            return ResultPage(correctAnswers, questions.Count);
+        }
 
         public IActionResult Hard(IList<HardQuestionViewModel> questions)
         {
@@ -39,7 +43,12 @@ namespace WebApplication.Controllers
                     correctAnswers++;
             }
 
-            decimal correctRatio = (decimal)correctAnswers / (decimal)questions.Count;
+            return ResultPage(correctAnswers, questions.Count);
+        }
+
+        private ViewResult ResultPage(int correctAnswers, int questionsCount)
+        {
+            decimal correctRatio = (decimal)correctAnswers / (decimal)questionsCount;
 
             if (correctRatio > 0.8M)
                 return View("Win");
