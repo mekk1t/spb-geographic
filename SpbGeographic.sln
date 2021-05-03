@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{787CAAF8-639B-4A27-A7FB-113DAB1DD80C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication", "WebApplication\WebApplication.csproj", "{787CAAF8-639B-4A27-A7FB-113DAB1DD80C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionCreator", "QuestionCreator\QuestionCreator.csproj", "{2F7B113B-233B-4F74-8A78-F0E6453FAD14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{787CAAF8-639B-4A27-A7FB-113DAB1DD80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{787CAAF8-639B-4A27-A7FB-113DAB1DD80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{787CAAF8-639B-4A27-A7FB-113DAB1DD80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F7B113B-233B-4F74-8A78-F0E6453FAD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7B113B-233B-4F74-8A78-F0E6453FAD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F7B113B-233B-4F74-8A78-F0E6453FAD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7B113B-233B-4F74-8A78-F0E6453FAD14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
