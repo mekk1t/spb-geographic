@@ -20,6 +20,11 @@ namespace QuestionCreator.Forms
         {
             InitializeComponent();
             FormClosed += Form_Closed;
+
+            richTextBox1.TextChanged += TextBox_TextChanged;
+            richTextBox2.TextChanged += TextBox_TextChanged;
+            richTextBox2.TextChanged += richTextBox2_TextChanged;
+
             Text = $"Работа с вопросами для среднего теста ver.{Application.ProductVersion}";
             label4.Text = "";
             ToolStripMenuItem openImage = new ToolStripMenuItem("Открыть изображение");
@@ -58,6 +63,7 @@ namespace QuestionCreator.Forms
         {
             pictureBox1.Image = null;
             opened = false;
+            label1.Visible = false;
         }
 
         private void saveJson()

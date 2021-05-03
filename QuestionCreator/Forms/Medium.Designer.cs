@@ -30,6 +30,7 @@ namespace QuestionCreator.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Medium));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -60,14 +61,16 @@ namespace QuestionCreator.Forms
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(441, 6);
+            this.label1.Location = new System.Drawing.Point(447, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Visible = false;
             // 
             // richTextBox1
             // 
@@ -85,6 +88,7 @@ namespace QuestionCreator.Forms
             this.label2.Size = new System.Drawing.Size(93, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Введите вопрос";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
             // 
@@ -100,10 +104,9 @@ namespace QuestionCreator.Forms
             // 
             this.richTextBox2.Location = new System.Drawing.Point(12, 432);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(935, 148);
+            this.richTextBox2.Size = new System.Drawing.Size(935, 89);
             this.richTextBox2.TabIndex = 5;
             this.richTextBox2.Text = "";
-            this.richTextBox2.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // panel1
             // 
@@ -116,7 +119,7 @@ namespace QuestionCreator.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 583);
+            this.label4.Location = new System.Drawing.Point(12, 524);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 7;
@@ -125,7 +128,7 @@ namespace QuestionCreator.Forms
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(441, 622);
+            this.button1.Location = new System.Drawing.Point(447, 569);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -135,7 +138,7 @@ namespace QuestionCreator.Forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 622);
+            this.button2.Location = new System.Drawing.Point(12, 569);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(189, 23);
             this.button2.TabIndex = 20;
@@ -156,7 +159,10 @@ namespace QuestionCreator.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 657);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(959, 599);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -166,7 +172,9 @@ namespace QuestionCreator.Forms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Medium";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Medium";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
