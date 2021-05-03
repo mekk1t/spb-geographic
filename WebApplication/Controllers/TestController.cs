@@ -29,7 +29,7 @@ namespace WebApplication.Controllers
             var questions = new List<HardQuestionViewModel>();
             foreach (var hardSubDirectory in hardSubDirectories)
             {
-                var handler = new TestQuestionsHandler(hardSubDirectory);
+                var handler = new HardTestQuestionsHandler(hardSubDirectory);
                 questions.AddRange(handler.GetQuestions());
             }
 
