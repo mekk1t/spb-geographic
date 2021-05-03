@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication.Models.Hard;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,39 +23,17 @@ namespace WebApplication.Controllers
             return View(questions);
         }
         public IActionResult Medium() => View();
-        public IActionResult Hard() => View();
-
-        public IActionResult Index()
+        public IActionResult Hard()
         {
-            // Пример задания входных данных и возвращения представления
+            var hardSubDirectories = Directory.GetDirectories("Images/Hard");
+            var questions = new List<HardQuestionViewModel>();
+            foreach (var hardSubDirectory in hardSubDirectories)
+            {
+                var handler = new TestQuestionsHandler(hardSubDirectory);
+                questions.AddRange(handler.GetQuestions());
+            }
 
-            //var fileBytes1 = System.IO.File.ReadAllBytes("Images/01.png");
-            //var file1 = Convert.ToBase64String(fileBytes1);
-            //var fileBytes2 = System.IO.File.ReadAllBytes("Images/02.png");
-            //var file2 = Convert.ToBase64String(fileBytes2);
-            //var viewModels = new List<QuestionViewModel>
-            //{
-            //    new QuestionViewModel
-            //    {
-            //        ImageBase64 = file1,
-            //        Options = new string[4]
-            //        {
-            //            "DOOM", "Wolfenstein", "Serious Sam", "The Sims"
-            //        },
-            //        CorrectAnswer = "DOOM"
-            //    },
-            //    new QuestionViewModel
-            //    {
-            //        ImageBase64 = file2,
-            //        Options = new string[4]
-            //        {
-            //            "Ответ 1 ", "Ответ 2", "Ответ 3", "Ответ 4"
-            //        },
-            //        CorrectAnswer = "Ответ 1"
-            //    },
-            //};
-
-            return View();
+            return View(questions);
         }
     }
 }

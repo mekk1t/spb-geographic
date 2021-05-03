@@ -1,0 +1,30 @@
+﻿@model IList<WebApplication.Models.Hard.HardQuestionViewModel>
+
+<h1>Тест "Сложный"</h1>
+<h2>Найдите вид со спутника для каждой достопримечательности</h2>
+<div class="unique">
+    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Hard" method="post">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+        <div class="question">
+            <div style="display: flex;">
+                <img style="border-radius:20px; margin-right:auto; margin-left: auto;" width="600" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+
+                @foreach (var answer in Model[i].Options)
+                {
+                    <label>
+                        <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                        <img style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
+                    </label> <br />
+                }
+            </div>
+        </div>
+            <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer" />
+
+        <hr style="border-color: darkslategrey; border-width: 3px;"/>
+        }
+        <button class="btn btn-primary">Отправить</button>
+    </form>
+</div>
