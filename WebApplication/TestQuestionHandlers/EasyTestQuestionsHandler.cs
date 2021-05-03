@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using WebApplication.Models;
 using WebApplication.Models.Easy;
 
 namespace WebApplication.DirectoryHandlers
