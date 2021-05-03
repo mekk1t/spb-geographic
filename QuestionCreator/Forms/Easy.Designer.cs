@@ -137,11 +137,13 @@ namespace QuestionCreator
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Enabled = false;
             this.radioButton1.Location = new System.Drawing.Point(397, 404);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(31, 19);
             this.radioButton1.TabIndex = 11;
             this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "correctAnswerRb";
             this.radioButton1.Text = "1";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
@@ -149,11 +151,13 @@ namespace QuestionCreator
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
             this.radioButton2.Location = new System.Drawing.Point(724, 400);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(31, 19);
             this.radioButton2.TabIndex = 12;
             this.radioButton2.TabStop = true;
+            this.radioButton2.Tag = "correctAnswerRb";
             this.radioButton2.Text = "2";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
@@ -161,11 +165,13 @@ namespace QuestionCreator
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.Enabled = false;
             this.radioButton4.Location = new System.Drawing.Point(724, 448);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(31, 19);
             this.radioButton4.TabIndex = 14;
             this.radioButton4.TabStop = true;
+            this.radioButton4.Tag = "correctAnswerRb";
             this.radioButton4.Text = "4";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
@@ -173,11 +179,13 @@ namespace QuestionCreator
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.Enabled = false;
             this.radioButton3.Location = new System.Drawing.Point(397, 447);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(31, 19);
             this.radioButton3.TabIndex = 13;
             this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "correctAnswerRb";
             this.radioButton3.Text = "3";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
@@ -217,6 +225,7 @@ namespace QuestionCreator
             this.richTextBox1.Size = new System.Drawing.Size(363, 74);
             this.richTextBox1.TabIndex = 21;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // label3
             // 
@@ -254,6 +263,7 @@ namespace QuestionCreator
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Easy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с легкими вопросами";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

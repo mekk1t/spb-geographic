@@ -28,7 +28,9 @@ namespace QuestionCreator.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Medium medium = new Medium();
+            medium.Show();
+            this.Hide();
         }
     }
 }

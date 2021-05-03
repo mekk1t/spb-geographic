@@ -7,11 +7,11 @@ using WebApplication.Models.Hard;
 
 namespace WebApplication.DirectoryHandlers
 {
-    public class TestQuestionsHandler
+    public class HardTestQuestionsHandler
     {
         private readonly string _directory;
 
-        public TestQuestionsHandler(string directory)
+        public HardTestQuestionsHandler(string directory)
         {
             _directory = directory;
         }
