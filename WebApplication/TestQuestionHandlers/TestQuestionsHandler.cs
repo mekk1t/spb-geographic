@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medallion;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,11 +23,13 @@ namespace WebApplication.DirectoryHandlers
             foreach (var subDirectory in subDirectories)
             {
                 var screenshotsFilePaths = Directory.GetFiles($"{subDirectory}/Screenshots");
+                var options = screenshotsFilePaths.Select(filePath => GetBase64File(filePath)).ToList();
+                options.Shuffle();
                 result.Add(new HardQuestionViewModel
                 {
                     Thumbnail = GetBase64File($"{subDirectory}/image.jpg"),
                     CorrectAnswer = GetBase64File($"{subDirectory}/Screenshots/correct.jpg"),
-                    Options = screenshotsFilePaths.Select(filePath => GetBase64File(filePath)).ToList()
+                    Options = options
                 });
             }
 

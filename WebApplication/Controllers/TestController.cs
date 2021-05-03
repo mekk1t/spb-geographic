@@ -19,6 +19,7 @@ namespace WebApplication.Controllers
                 var handler = new TestQuestionsHandler(hardSubDirectory);
                 questions.AddRange(handler.GetQuestions());
             }
+
             return View(questions);
         }
     }
