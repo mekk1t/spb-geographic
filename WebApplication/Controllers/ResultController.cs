@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
             int correctAnswers = 0;
             for (int i = 0; i < questions.Count; i++)
             {
-                if (questions[i].PossibleAnswers.Contains(questions[i].UserInput))
+                if (questions[i].PossibleAnswers.Contains(questions[i].UserInput.ToLower().Trim()))
                     correctAnswers++;
             }
 
