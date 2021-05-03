@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,18 +10,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using QuestionCreator.Forms;
-using WebApplication.Models.Easy;
+using WebApplication.Models.Medium;
 
-namespace QuestionCreator
+namespace QuestionCreator.Forms
 {
-    public partial class Easy : Form
+    public partial class Medium : Form
     {
-        public Easy()
+        public Medium()
         {
             InitializeComponent();
             FormClosed += Form_Closed;
-            Text = $"Работа с вопросами для легкого теста ver.{Application.ProductVersion}";
-
+            Text = $"Работа с вопросами для среднего теста ver.{Application.ProductVersion}";
+            label4.Text = "";
             ToolStripMenuItem openImage = new ToolStripMenuItem("Открыть изображение");
             ToolStripMenuItem cleanImage = new ToolStripMenuItem("Очистить");
 
@@ -35,10 +34,9 @@ namespace QuestionCreator
 
         Image image;
         bool opened = false;
-        string answer;
         string image_location;
         string pictureName;
-
+        List<string> possible_answers;
         public void openImage_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = openFileDialog1.ShowDialog();
@@ -50,8 +48,8 @@ namespace QuestionCreator
 
                 pictureName = Path.GetFileNameWithoutExtension(openFileDialog1.FileName);
 
-                label3.Text = pictureName;
-                label3.Visible = true;
+                label1.Text = pictureName;
+                label1.Visible = true;
                 opened = true;
             }
         }
@@ -71,77 +69,27 @@ namespace QuestionCreator
             {
                 string filename = sfd.FileName;
 
-                EasyQuestionViewModel json = new EasyQuestionViewModel
+                MediumQuestionViewModel json = new MediumQuestionViewModel
                 {
                     Question = richTextBox1.Text,
-                    Options = new string[]
-                    {
-                        textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text
-                    },
-                    CorrectAnswer = answer,
-                    SelectedAnswer = "0",
-                    ImageBase64 = ($"data:image/jpeg; base64,{Convert.ToBase64String(File.ReadAllBytes(image_location))}")
+                    PossibleAnswers = possible_answers,
+                    Thumbnail = ($"data:image/jpeg; base64,{Convert.ToBase64String(File.ReadAllBytes(image_location))}")
                 };
                 MessageBox.Show(filename);
                 File.WriteAllText(filename, JsonConvert.SerializeObject(json, Formatting.Indented));
                 Close();
-                Easy easy = new Easy();
-                easy.Show();
+                Medium medium = new Medium();
+                medium.Show();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (opened)
-            {
-                saveJson();
+            if (opened) {
+            saveJson();
             } else
             {
                 MessageBox.Show("Вы картиночку забыли");
-            }
-        }
-
-        private void textBox_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox1.Text != "" & textBox2.Text != "" & textBox3.Text != "" & textBox4.Text != "" & richTextBox1.Text != "")
-            {
-                radioButton1.Enabled = radioButton2.Enabled = radioButton3.Enabled = radioButton4.Enabled = true;
-            } else
-            {
-                radioButton1.Enabled = radioButton2.Enabled = radioButton3.Enabled = radioButton4.Enabled = false;
-                radioButton1.Checked = radioButton2.Checked = radioButton3.Checked = radioButton4.Checked = false;
-
-                button1.Enabled = false;
-                answer = "";
-            }
-        }
-
-        void radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if (rb == null)
-            {
-                return;
-            }
-            if (rb.Checked)
-            {
-                button1.Enabled = true;
-                string action = rb.Text;
-                switch (action)
-                {
-                    case "1":
-                        answer = textBox1.Text;
-                        break;
-                    case "2":
-                        answer = textBox2.Text;
-                        break;
-                    case "3":
-                        answer = textBox3.Text;
-                        break;
-                    case "4":
-                        answer = textBox4.Text;
-                        break;
-                }
             }
         }
 
@@ -152,11 +100,27 @@ namespace QuestionCreator
             Close();
         }
 
-        private void Form_Closed( object sender, FormClosedEventArgs e)
+        private void Form_Closed(object sender, FormClosedEventArgs e)
         {
             Form form = Application.OpenForms[0];
             form.Show();
             Controls.Clear();
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text != "" & richTextBox2.Text != "")
+            {
+                button1.Enabled = true;
+            } else
+            {
+                button1.Enabled = false;
+            }
+        }
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            possible_answers = richTextBox2.Text.Split(';').ToList();
+            label4.Text = $"Количество возможных ответов: {possible_answers.Count}";
         }
     }
 }
