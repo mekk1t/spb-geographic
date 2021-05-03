@@ -23,13 +23,6 @@ namespace QuestionCreator
             FormClosed += Form_Closed;
             Text = $"Работа с вопросами для легкого теста ver.{Application.ProductVersion}";
 
-            //ToolStripMenuItem fileItem = new ToolStripMenuItem("Файл");
-            //fileItem.DropDownItems.Add("Открыть json");
-            //fileItem.DropDownItems.Add(new ToolStripMenuItem("Сохранить json"));
-
-            //fileItem.DropDownItemClicked += FileItem_Click;
-            //menuStrip1.Items.Add(fileItem);
-
             ToolStripMenuItem openImage = new ToolStripMenuItem("Открыть изображение");
             ToolStripMenuItem cleanImage = new ToolStripMenuItem("Очистить");
 
@@ -37,25 +30,14 @@ namespace QuestionCreator
             cleanImage.Click += cleanImage_Click;
 
             contextMenuStrip1.Items.AddRange(new[] { openImage, cleanImage });
-
             pictureBox1.ContextMenuStrip = contextMenuStrip1;
-
         }
 
         Image image;
+        bool opened = false;
         string answer;
         string image_location;
         string pictureName;
-        private void FileItem_Click(object sender, ToolStripItemClickedEventArgs e)
-        {
-            string action = e.ClickedItem.Text;
-            switch (action)
-            {
-                case "Сохранить json":
-                    saveJson();
-                    break;
-            }
-        }
 
         public void openImage_Click(object sender, EventArgs e)
         {
@@ -70,12 +52,14 @@ namespace QuestionCreator
 
                 label3.Text = pictureName;
                 label3.Visible = true;
+                opened = true;
             }
         }
 
         private void cleanImage_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = null;
+            opened = false;
         }
 
         private void saveJson()
@@ -108,14 +92,27 @@ namespace QuestionCreator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            saveJson();
+            if (opened)
+            {
+                saveJson();
+            } else
+            {
+                MessageBox.Show("Вы картиночку забыли");
+            }
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text != "" & textBox2.Text != "" & textBox3.Text != "" & textBox4.Text != "" & richTextBox1.Text != "")
             {
-                button1.Enabled = true;
+                radioButton1.Enabled = radioButton2.Enabled = radioButton3.Enabled = radioButton4.Enabled = true;
+            } else
+            {
+                radioButton1.Enabled = radioButton2.Enabled = radioButton3.Enabled = radioButton4.Enabled = false;
+                radioButton1.Checked = radioButton2.Checked = radioButton3.Checked = radioButton4.Checked = false;
+
+                button1.Enabled = false;
+                answer = "";
             }
         }
 
@@ -128,6 +125,7 @@ namespace QuestionCreator
             }
             if (rb.Checked)
             {
+                button1.Enabled = true;
                 string action = rb.Text;
                 switch (action)
                 {
@@ -160,5 +158,7 @@ namespace QuestionCreator
             form.Show();
             Controls.Clear();
         }
+
+
     }
 }
