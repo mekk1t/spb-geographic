@@ -231,6 +231,9 @@
     <Content Update="Images\Medium\Krasnogvardeyskiy\Questions\Most_Petra_Velikogo.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\images\home-background.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
