@@ -16,7 +16,7 @@
         border: 5px solid lawngreen;
     }
 </style>
-<h2>Найдите вид со спутника для каждой достопримечательности</h2>
+<h2 class="text-center">Найдите вид со спутника для каждой достопримечательности</h2>
 
 <div id="test-carousel" class="carousel slide text-center" data-ride="false">
     <form enctype="multipart/form-data" asp-controller="Result" asp-action="Hard" method="post" class="carousel-inner">
@@ -28,14 +28,14 @@
             <div style="display: flex;">
                 <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
             </div>
-            <div class="text-center" style="margin-left: 250px; flex-wrap: wrap; display: flex; max-width:700px; justify-content: space-between;">
+            <div class="mx-auto form-check">
 
                 @foreach (var answer in Model[i].Options)
                 {
                     var id = Guid.NewGuid().ToString();
-                    <input id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                    <label for="@id">
-                        <img class="scale screenshot" style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
+                    <input class="form-check-input" id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                    <label class="form-check-label" style="margin: 10px;" for="@id">
+                        <img class="scale screenshot" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
                     </label> <br />
                 }
             </div>
