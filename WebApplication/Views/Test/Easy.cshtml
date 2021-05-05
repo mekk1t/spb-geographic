@@ -1,4 +1,10 @@
 ﻿@model IList<WebApplication.Models.Easy.EasyQuestionViewModel>
+<style>
+    body > div.container {
+        background: 0 100% url(/images/lion.png) no-repeat;
+        background-size: 25%;
+    }
+</style>
 <div id="test-carousel" class="carousel slide text-center" data-ride="false">
     <form enctype="multipart/form-data" asp-controller="Result" asp-action="Easy" method="post" class="carousel-inner">
         @for (int i = 0; i < Model.Count; i++)
@@ -31,4 +37,4 @@
         </a>
     </form>
 </div>
-<button class="btn btn-outline-success" onclick="document.getElementById('submit-test').click()">Готово!</button>
+<button class="btn btn-success" onclick="document.getElementById('submit-test').click()">Готово!</button>
