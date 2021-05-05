@@ -1,37 +1,47 @@
 ﻿@model IList<WebApplication.Models.Easy.EasyQuestionViewModel>
-
 <style>
-    .scale {
-        transition: 1s; 
-    }
-
-    .scale:hover {
-         transform: scale(1.5); 
+    body {
+        background: black;
     }
 </style>
 
 <p>Легкий тест</p>
-<div class="unique">
-    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Easy" method="post">
+
+<div id="test-carousel" class="carousel slide text-center" data-ride="carousel">
+    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Easy" method="post" class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-400" src="~/images/easy-test-thumbnail.jpg" alt="Обложка легкого теста">
+        </div>
         @for (int i = 0; i < Model.Count; i++)
         {
-            <div class="question">
-                <h3 name ="[@i].Question">@Model[i].Question </h3>
-                <div class="question-image">
-                    <img width="400" src="@Model[i].ImageBase64" alt="Картинка" class="scale"/>
+            <div class="carousel-item">
+                <div class="question">
+                    <h3 name="[@i].Question">@Model[i].Question </h3>
+                    <div class="question-image">
+                        <img width="400" src="@Model[i].ImageBase64" alt="Картинка" class="scale" />
+                    </div>
+                    <div class="select-answer">
+                        @foreach (var answer in Model[i].Options)
+                        {
+                            <label>
+                                <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                                @answer
+                            </label> <br />
+                        }
+                    </div>
                 </div>
-                <div class="select-answer">
-                    @foreach (var answer in Model[i].Options)
-                    {
-                        <label>
-                            <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                            @answer
-                        </label> <br />
-                    }
-                </div>
+                <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer" />
             </div>
-            <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer"/>
         }
+
+        <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
         <button>Отправить</button>
     </form>
 </div>
