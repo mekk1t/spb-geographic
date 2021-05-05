@@ -1,14 +1,14 @@
 ﻿@model IList<WebApplication.Models.Medium.MediumQuestionViewModel>
 
-<p>Тест "Средний"</p>
-<div class="unique">
-    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Medium" method="post">
+<div id="test-carousel" class="carousel slide text-center" data-ride="false">
+    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Medium" method="post" class="carousel-inner">
         @for (int i = 0; i < Model.Count; i++)
         {
-            <div class="question">
+            string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
+            <div class="@carousel_item_class">
                 <h3 name="[@i].Question">@Model[i].Question </h3>
                 <div class="question-image">
-                    <img width="400" src="@Model[i].Thumbnail" alt="Картинка" class="scale" />
+                    <img height="300" src="@Model[i].Thumbnail" alt="Картинка" class="scale" />
                 </div>
                 <br />
                 <div class="test-answer">
@@ -19,9 +19,15 @@
             {
                 <input type="hidden" name="[@i].PossibleAnswers[@j]" value="@Model[i].PossibleAnswers[j]" />
             }
-
-            <hr />
         }
-        <button>Отправить</button>
+        <input id="submit-test" type="submit" style="display: none;" />
+
+        <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
+            <span class="btn btn-info" aria-hidden="true">Назад</span>
+        </a>
+        <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
+            <span class="btn btn-info">Дальше</span>
+        </a>
     </form>
 </div>
+<button onclick="document.getElementById('submit-test').click()">Отправить</button>
