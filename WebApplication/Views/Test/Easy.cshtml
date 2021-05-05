@@ -1,24 +1,14 @@
 ﻿@model IList<WebApplication.Models.Easy.EasyQuestionViewModel>
-<style>
-    body {
-        background: black;
-    }
-</style>
-
-<p>Легкий тест</p>
-
-<div id="test-carousel" class="carousel slide text-center" data-ride="carousel">
+<div id="test-carousel" class="carousel slide text-center" data-ride="false">
     <form enctype="multipart/form-data" asp-controller="Result" asp-action="Easy" method="post" class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-400" src="~/images/easy-test-thumbnail.jpg" alt="Обложка легкого теста">
-        </div>
         @for (int i = 0; i < Model.Count; i++)
         {
-            <div class="carousel-item">
+            string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
+            <div class="@carousel_item_class">
                 <div class="question">
                     <h3 name="[@i].Question">@Model[i].Question </h3>
                     <div class="question-image">
-                        <img width="400" src="@Model[i].ImageBase64" alt="Картинка" class="scale" />
+                        <img height="300" src="@Model[i].ImageBase64" alt="Картинка" class="scale" />
                     </div>
                     <div class="select-answer">
                         @foreach (var answer in Model[i].Options)
@@ -34,16 +24,14 @@
             </div>
         }
 
+        <input id="submit-test" type="submit" style="display: none;" />
+
         <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="FF0000" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-            </svg>
+            <span class="btn btn-info" aria-hidden="true">Назад</span>
         </a>
         <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="FFFFFF" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-            </svg>
+            <span class="btn btn-info">Дальше</span>
         </a>
-        <button>Отправить</button>
     </form>
 </div>
+<button class="btn btn-outline-success" onclick="document.getElementById('submit-test').click()">Отправить</button>
