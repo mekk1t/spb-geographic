@@ -6,6 +6,7 @@
             string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
             <div class="@carousel_item_class">
                 <div class="question">
+                    <h6>@(i + 1) из @(Model.Count)</h6>
                     <h3 name="[@i].Question">@Model[i].Question </h3>
                     <div class="question-image">
                         <img height="300" src="@Model[i].ImageBase64" alt="Картинка" class="scale" />
@@ -25,13 +26,9 @@
         }
 
         <input id="submit-test" type="submit" style="display: none;" />
-
-        <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
-            <span class="btn btn-info" aria-hidden="true">Назад</span>
-        </a>
         <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
             <span class="btn btn-info">Дальше</span>
         </a>
     </form>
 </div>
-<button class="btn btn-outline-success" onclick="document.getElementById('submit-test').click()">Отправить</button>
+<button class="btn btn-outline-success" onclick="document.getElementById('submit-test').click()">Готово!</button>
