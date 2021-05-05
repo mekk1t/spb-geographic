@@ -1,4 +1,9 @@
 ﻿@model ResultViewModel
+<style>
+    div.alert {
+        margin-top: 20px;
+    }
+</style>
 <div class="results">
     <img class="boyarskiy-face-result" src="@Model.ImageUrl" />
     <div class="statistics text-center">
@@ -15,14 +20,52 @@
             <a class="btn btn-warning" href='javascript:history.go(-1)'>
                 Пройти еще раз
             </a>
-            <a class="btn btn-outline-info" onclick="document.querySelector('div.hidden-answers').style.display = 'block';">
+            <a class="btn btn-outline-info" onclick="document.querySelector('div.hidden-answers').style.display = 'block'; document.querySelector('div.results').style.display = 'none';">
                 Смотреть результаты
             </a>
         </div>
     </div>
 </div>
 <div class="hidden-answers" style="display: none;">
-    <p>
-        Здесь типа ответы спрятаны, хаха
-    </p>
+    @if (Model.EasyQuestions != null && Model.EasyQuestions.Count > 0)
+    {
+        foreach (var question in Model.EasyQuestions)
+        {
+            <div class="question">
+                <h3>@question.Question </h3>
+                <div class="question-image">
+                    <img height="300" src="@question.ImageBase64" alt="Картинка" />
+                </div>
+                <div class="alert alert-success" role="alert">
+                    Правильный ответ: <br />
+                    <b>@question.CorrectAnswer</b>
+                </div>
+                @if (string.IsNullOrEmpty(question.SelectedAnswer))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Вы выбрали: <br />
+                        <b>-</b>
+                    </div>
+                }
+                else if (question.SelectedAnswer != question.CorrectAnswer)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Вы выбрали: <br />
+                        <b>@question.SelectedAnswer</b>
+                    </div>
+                }
+            </div>
+        }
+    }
+    @if (Model.MediumQuestions != null && Model.MediumQuestions.Count > 0)
+    {
+
+    }
+    @if (Model.HardQuestions != null && Model.HardQuestions.Count > 0)
+    {
+
+    }
+    <a class="mx-auto btn btn-info" href="/">
+        На главную
+    </a>
 </div>

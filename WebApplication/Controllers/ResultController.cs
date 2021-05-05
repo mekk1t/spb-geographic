@@ -20,7 +20,7 @@ namespace WebApplication.Controllers
                     correctAnswers++;
             }
 
-            return ResultPage(correctAnswers, questions.Count);
+            return ResultPage(correctAnswers, questions.Count, easyQuestions: questions);
         }
 
         public IActionResult Medium(IList<MediumQuestionViewModel> questions)
@@ -32,7 +32,7 @@ namespace WebApplication.Controllers
                     correctAnswers++;
             }
 
-            return ResultPage(correctAnswers, questions.Count);
+            return ResultPage(correctAnswers, questions.Count, mediumQuestions: questions);
         }
 
         public IActionResult Hard(IList<HardQuestionViewModel> questions)
@@ -45,10 +45,15 @@ namespace WebApplication.Controllers
                     correctAnswers++;
             }
 
-            return ResultPage(correctAnswers, questions.Count);
+            return ResultPage(correctAnswers, questions.Count, hardQuestions: questions);
         }
 
-        private ViewResult ResultPage(int correctAnswers, int questionsCount)
+        private ViewResult ResultPage(
+            int correctAnswers,
+            int questionsCount,
+            IList<EasyQuestionViewModel> easyQuestions = null,
+            IList<MediumQuestionViewModel> mediumQuestions = null,
+            IList<HardQuestionViewModel> hardQuestions = null)
         {
             decimal correctRatio = (decimal)correctAnswers / (decimal)questionsCount;
 
@@ -57,7 +62,10 @@ namespace WebApplication.Controllers
                 PercentRatio = (int)Math.Round(correctRatio * 100, 0),
                 CorrectAnswersCount = correctAnswers,
                 TotalQuestionsCount = questionsCount,
-                ImageUrl = "/Results/fail.png"
+                ImageUrl = "/Results/fail.png",
+                EasyQuestions = easyQuestions,
+                MediumQuestions = mediumQuestions,
+                HardQuestions = hardQuestions
             };
 
             if (correctRatio > 0.8M)
