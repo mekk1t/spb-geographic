@@ -68,6 +68,13 @@
     </div>
     @if (string.IsNullOrEmpty(question.UserInput))
     {
+        <div class="alert alert-success" role="alert">
+            Ответы: <br />
+            @foreach (var answer in question.PossibleAnswers)
+            {
+                <b>@(answer + "; ")</b>
+            }
+        </div>
         <div class="alert alert-danger" role="alert">
             <b>Вы ничего не ввели</b>
         </div>
@@ -98,11 +105,11 @@
     }
     @if (Model.HardQuestions != null && Model.HardQuestions.Count > 0)
     {
-        <h3>Найдите вид со спутника</h3>
         foreach (var question in Model.HardQuestions)
         {
 <div class="question">
     <div class="question-image">
+        <h3>Найдите вид со спутника</h3>
         <img height="200" src="data:image/jpg;base64, @question.Thumbnail" alt="Картинка" />
     </div>
     @if (string.IsNullOrEmpty(question.SelectedAnswer))
@@ -139,6 +146,7 @@
     }
 
 </div>
+    <hr>
         }
     }
     <a class="mx-auto btn btn-info" href="/">
