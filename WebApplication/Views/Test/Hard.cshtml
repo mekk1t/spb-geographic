@@ -12,21 +12,22 @@
         @for (int i = 0; i < Model.Count; i++)
         {
             string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
-            <div class="@carousel_item_class">
-                <div style="display: flex;">
-                    <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
-                </div>
-                <div class="text-center" style="margin-left: 250px; flex-wrap: wrap; display: flex; max-width:700px; justify-content: space-between;">
-
-                    @foreach (var answer in Model[i].Options)
-                    {
-                        <label>
-                            <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                            <img class="scale screenshot" style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
-                        </label> <br />
-                    }
-                </div>
+        <div class="@carousel_item_class">
+            <h6>@(i + 1) из @(Model.Count)</h6>
+            <div style="display: flex;">
+                <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
             </div>
+            <div class="text-center" style="margin-left: 250px; flex-wrap: wrap; display: flex; max-width:700px; justify-content: space-between;">
+
+                @foreach (var answer in Model[i].Options)
+                {
+                    <label>
+                        <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                        <img class="scale screenshot" style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
+                    </label> <br />
+                }
+            </div>
+        </div>
             <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer" />
         }
         <input id="submit-test" type="submit" style="display: none;" />
