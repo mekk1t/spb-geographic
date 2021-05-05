@@ -12,6 +12,10 @@ a {
   color: #0366d6;
 }
 
+.question-image img {
+    max-height: 300px;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -79,7 +83,7 @@ body {
 }
 
 .scale:hover {
-  transform: scale(1.2); /* Увеличиваем масштаб */
+  transform: scale(1.5); /* Увеличиваем масштаб */
 }
 
 .tests-list {
