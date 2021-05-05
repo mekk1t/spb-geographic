@@ -59,7 +59,35 @@
     }
     @if (Model.MediumQuestions != null && Model.MediumQuestions.Count > 0)
     {
-
+        foreach (var question in Model.MediumQuestions)
+        {
+            <div class="question">
+                <h3>@question.Question </h3>
+                <div class="question-image">
+                    <img height="300" src="@question.Thumbnail" alt="Картинка" />
+                </div>
+                <div class="alert alert-success" role="alert">
+                    Возможные ответы: <br />
+                    @foreach (var answer in question.PossibleAnswers)
+                    {
+                        <b>@(answer + "; ")</b>
+                    }
+                </div>
+                @if (string.IsNullOrEmpty(question.UserInput))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <b>Вы ничего не ввели</b>
+                    </div>
+                }
+                else if (!question.PossibleAnswers.Contains(question.UserInput))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Вы ввели: <br />
+                        <b>@question.UserInput</b>
+                    </div>
+                }
+            </div>
+        }
     }
     @if (Model.HardQuestions != null && Model.HardQuestions.Count > 0)
     {
