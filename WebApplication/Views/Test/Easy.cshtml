@@ -20,10 +20,12 @@
                     <div class="select-answer">
                         @foreach (var answer in Model[i].Options)
                         {
-                            <label>
-                                <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                                @answer
-                            </label> <br />
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                                    @answer
+                                </label> <br />
+                            </div>
                         }
                     </div>
                 </div>
@@ -32,9 +34,12 @@
         }
 
         <input id="submit-test" type="submit" style="display: none;" />
+        <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
+            <span class="btn btn-info">Назад</span>
+        </a>
         <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
             <span class="btn btn-info">Дальше</span>
         </a>
     </form>
 </div>
-<button class="btn btn-success" onclick="document.getElementById('submit-test').click()">Готово!</button>
+<button class="submit-test-button btn btn-success" onclick="document.getElementById('submit-test').click()">Готово!</button>

@@ -20,10 +20,6 @@ div.select-answer {
     max-height: 300px;
 }
 
-a.carousel-control-prev:hover, a.carousel-control-next:hover {
-    background-color: lightgoldenrodyellow;
-}
-
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -116,4 +112,8 @@ body {
 
 .tests-list a {
     padding: 10px;
+}
+
+.submit-test-button {
+    margin-top: 20px;
 }
