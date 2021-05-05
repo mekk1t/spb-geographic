@@ -1,0 +1,28 @@
+﻿@model ResultViewModel
+<div class="results">
+    <img class="boyarskiy-face-result" src="@Model.ImageUrl" />
+    <div class="statistics text-center">
+        <h5 class="text-uppercase">Результат</h5>
+        <ul>
+            <li>
+                Тест пройден на <b>@Model.PercentRatio%</b>.
+            </li>
+            <li>
+                Правильных ответов: @Model.CorrectAnswersCount из @Model.TotalQuestionsCount.
+            </li>
+        </ul>
+        <div class="controls">
+            <a class="btn btn-warning" href='javascript:history.go(-1)'>
+                Пройти еще раз
+            </a>
+            <a class="btn btn-outline-info" onclick="document.querySelector('div.hidden-answers').style.display = 'block';">
+                Смотреть результаты
+            </a>
+        </div>
+    </div>
+</div>
+<div class="hidden-answers" style="display: none;">
+    <p>
+        Здесь типа ответы спрятаны, хаха
+    </p>
+</div>

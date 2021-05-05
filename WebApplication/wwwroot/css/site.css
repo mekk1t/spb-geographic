@@ -117,3 +117,20 @@ body {
 .submit-test-button {
     margin-top: 20px;
 }
+
+div.results {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 60px;
+}
+
+div.results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+}
+
+div.results a {
+    margin-top: 60px;
+}

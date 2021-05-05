@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using WebApplication.Models.Hard;
 using WebApplication.Models.Easy;
 using WebApplication.Models.Medium;
+using WebApplication.Models;
+using System;
 
 namespace WebApplication.Controllers
 {
@@ -50,12 +52,20 @@ namespace WebApplication.Controllers
         {
             decimal correctRatio = (decimal)correctAnswers / (decimal)questionsCount;
 
-            if (correctRatio > 0.8M)
-                return View("Win");
-            if (correctRatio > 0.5M && correctRatio <= 0.8M)
-                return View("Neutral");
+            var resultViewModel = new ResultViewModel
+            {
+                PercentRatio = (int)Math.Round(correctRatio * 100, 0),
+                CorrectAnswersCount = correctAnswers,
+                TotalQuestionsCount = questionsCount,
+                ImageUrl = "/Results/fail.png"
+            };
 
-            return View("Fail");
+            if (correctRatio > 0.8M)
+                resultViewModel.ImageUrl = "/Results/success.jpg";
+            if (correctRatio > 0.5M && correctRatio <= 0.8M)
+                resultViewModel.ImageUrl = "/Results/neutral.jpg";
+
+            return View("Results", resultViewModel);
         }
     }
 }
