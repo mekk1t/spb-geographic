@@ -4,6 +4,17 @@
         background: 0 100% url(/images/hard-background.jpg) no-repeat;
         background-size: 100%;
     }
+    input {
+        visibility: hidden;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input:checked + label img {
+        border: 5px solid lawngreen;
+    }
 </style>
 <h2>Найдите вид со спутника для каждой достопримечательности</h2>
 
@@ -21,8 +32,9 @@
 
                 @foreach (var answer in Model[i].Options)
                 {
-                    <label>
-                        <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                    var id = Guid.NewGuid().ToString();
+                    <input id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                    <label for="@id">
                         <img class="scale screenshot" style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
                     </label> <br />
                 }
