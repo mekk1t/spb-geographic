@@ -23,24 +23,25 @@
         @for (int i = 0; i < Model.Count; i++)
         {
             string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
-        <div class="@carousel_item_class">
-            <h6>@(i + 1) из @(Model.Count)</h6>
-            <div style="display: flex;">
-                <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
-            </div>
-            <div class="mx-auto form-check">
+            <div class="@carousel_item_class">
+                <h6>@(i + 1) из @(Model.Count)</h6>
+                <div style="display: flex;">
+                    <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
+                </div>
+                <div class="mx-auto form-check">
 
-                @foreach (var answer in Model[i].Options)
-                {
-                    var id = Guid.NewGuid().ToString();
-                    <input class="form-check-input" id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                    <label class="form-check-label" style="margin: 10px;" for="@id">
-                        <img class="scale screenshot" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
-                    </label> <br />
-                }
+                    @foreach (var answer in Model[i].Options)
+                    {
+                        var id = Guid.NewGuid().ToString();
+                        <input class="form-check-input" id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                        <label class="form-check-label" style="margin: 10px;" for="@id">
+                            <img class="scale screenshot" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
+                        </label> <br />
+                    }
+                </div>
             </div>
-        </div>
             <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer" />
+            <input type="hidden" name="[@i].Thumbnail" value="@Model[i].Thumbnail" />
         }
         <input id="submit-test" type="submit" style="display: none;" />
 
