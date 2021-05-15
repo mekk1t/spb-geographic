@@ -12,10 +12,18 @@ a {
   color: #0366d6;
 }
 
+div.select-answer {
+    margin-top: 10px;
+}
+
+.question-image img {
+    max-height: 300px;
+}
+
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -79,5 +87,54 @@ body {
 }
 
 .scale:hover {
-  transform: scale(1.2); /* Увеличиваем масштаб */
+  transform: scale(1.5); /* Увеличиваем масштаб */
+}
+
+.tests-list {
+    margin-top: 60px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tests-list li {
+    border: 2px solid red;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 50px;
+}
+
+.tests-list li:hover {
+    background-color: lightcoral;
+}
+
+.tests-list a {
+    padding: 10px;
+}
+
+.submit-test-button {
+    margin-top: 20px;
+}
+
+div.results {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 60px;
+}
+
+div.results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+}
+
+div.results a {
+    margin-top: 60px;
+}
+
+div.alert img {
+    margin-top: 20px;
 }

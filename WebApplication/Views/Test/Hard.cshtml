@@ -1,30 +1,56 @@
 ﻿@model IList<WebApplication.Models.Hard.HardQuestionViewModel>
+<style>
+    body {
+        background: 0 100% url(/images/hard-background.jpg) no-repeat;
+        background-size: 100%;
+    }
+    input {
+        visibility: hidden;
+    }
 
-<h1>Тест "Сложный"</h1>
-<h2>Найдите вид со спутника для каждой достопримечательности</h2>
-<div class="unique">
-    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Hard" method="post">
+    label {
+        cursor: pointer;
+    }
+
+    input:checked + label img {
+        border: 5px solid lawngreen;
+    }
+</style>
+<h2 class="text-center">Найдите вид со спутника для каждой достопримечательности</h2>
+
+<div id="test-carousel" class="carousel slide text-center" data-ride="false">
+    <form enctype="multipart/form-data" asp-controller="Result" asp-action="Hard" method="post" class="carousel-inner">
         @for (int i = 0; i < Model.Count; i++)
         {
-        <div class="question">
-            <div style="display: flex;">
-                <img style="border-radius:20px; margin-right:auto; margin-left: auto;" width="600" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
-            </div>
-            <div style="display: flex; justify-content: space-between;">
+            string carousel_item_class = i == 0 ? "carousel-item active" : "carousel-item";
+            <div class="@carousel_item_class">
+                <h6>@(i + 1) из @(Model.Count)</h6>
+                <div style="display: flex;">
+                    <img class="scale" style="border-radius:20px; margin-right:auto; margin-left: auto;" height="300" src="data:image/jpg;base64, @Model[i].Thumbnail" alt="Картинка" />
+                </div>
+                <div class="mx-auto form-check">
 
-                @foreach (var answer in Model[i].Options)
-                {
-                    <label>
-                        <input name="[@i].SelectedAnswer" type="radio" value="@answer" />
-                        <img style="margin: 10px;" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
-                    </label> <br />
-                }
+                    @foreach (var answer in Model[i].Options)
+                    {
+                        var id = Guid.NewGuid().ToString();
+                        <input class="form-check-input" id="@id" name="[@i].SelectedAnswer" type="radio" value="@answer" />
+                        <label class="form-check-label" style="margin: 10px;" for="@id">
+                            <img class="scale screenshot" height="100" src="data:image/jpg;base64, @answer" alt="Вариант № @i" />
+                        </label> <br />
+                    }
+                </div>
             </div>
-        </div>
             <input type="hidden" name="[@i].CorrectAnswer" value="@Model[i].CorrectAnswer" />
-
-        <hr style="border-color: darkslategrey; border-width: 3px;"/>
+            <input type="hidden" name="[@i].Thumbnail" value="@Model[i].Thumbnail" />
         }
-        <button class="btn btn-primary">Отправить</button>
+        <input id="submit-test" type="submit" style="display: none;" />
+
+        <a class="carousel-control-prev" href="#test-carousel" role="button" data-slide="prev">
+            <span class="btn btn-info" aria-hidden="true">Назад</span>
+        </a>
+        <a class="carousel-control-next" href="#test-carousel" role="button" data-slide="next">
+            <span class="btn btn-info">Дальше</span>
+        </a>
     </form>
 </div>
+<button class="submit-test-button btn btn-success" onclick="document.getElementById('submit-test').click()">Отправить</button>
